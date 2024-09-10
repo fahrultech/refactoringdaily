@@ -1,0 +1,66 @@
+.articles-preview-vimeo {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  @include media-breakpoint-down(md) {
+    height: 200px;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.blockquote-wrapper {
+  position: relative;
+  &-icon {
+    margin-bottom: 12px;
+    font-size: 36px;
+    color: $secondary-color;
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+      position: absolute;
+      top: 5px;
+      left: 12px;
+    }
+  }
+  &-author {
+    color: $primary-color;
+  }
+  blockquote {
+    position: relative;
+    font-size: 18px;
+    line-height: 32px;
+    @include media-breakpoint-up(md) {
+      padding-left: 70px;
+    }
+  }
+}
+
+.post-slider {
+  .glide__arrows {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+  .glide__arrow {
+    background: #fff;
+    color: $primary-color;
+    opacity: 0.7;
+    padding: 0 2px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
+    height: 37px;
+    border: 0;
+    transition: opacity .2s ease;
+    &:first-child {
+      margin-right: 10px;
+    }
+    &:hover {
+      opacity: 1;
+    }
+    i {
+      font-size: 38px;
+    }
+  }
+}

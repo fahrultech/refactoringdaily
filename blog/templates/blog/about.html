@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <div class="container">
+      <section class="about-me">
+        <div class="d-flex flex-column flex-md-row">
+          <div class="about-me-author">
+            <img
+            src="{% static 'img/webp/profile-picture_2x.webp' %}"
+            alt="Profile picture"
+            width="100"
+            height="100"
+            >
+            <ul class="author-nav text-left">
+              <li>
+                <a class="author-nav-link" href="#" title="">
+                  <i class="pe-7s-bookmarks"></i> 
+                  Download my CV
+                </a>
+              </li>
+              <li>
+                <a class="author-nav-link" href="#" title="">
+                  <i class="pe-7s-paper-plane"></i> 
+                  Write message
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="about-me-content">
+            <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+              <h1 class="h1 fw-900">I'am Bill Gates</h1>
+              <div class="d-flex align-items-start justify-content-center">
+                <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" title="Github"><i class="fab fa-git"></i></a>
+                <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <span class="about-me-information">Front-End Developer at Microsoft Company</span>
+            <p class="font-secondary about-me-description">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+              erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut aliquip ex ea commodo
+              consequat. Duis autem vel eum iriure dolor in hendr rit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat
+              nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te
+              feugait nulla facilisi. Lorem ipsum dolor sitamet, consectetuer adipiscing elit.
+            </p>
+            <img src="{% static 'img/webp/signature.webp' %}" alt="Author Signature" title="Author Signature">
+          </div>
+        </div>
+      </section>
+      <section class="details white-box">
+        <div class="row">
+          <div class="philosophy col-xs-12 col-md-6">
+            <div class="philosophy-content">
+              <h2 class="details-header fw-900">My philoshopy</h2>
+              <p class="philosophy-content-text font-secondary">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+                erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut aliquip ex ea commodo
+                consequat.
+              </p>
+              <p class="philosophy-content-text font-secondary">
+                Duis autem vel eum iriure dolor in hendr rit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
+                at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum.
+              </p>
+              <p class="philosophy-content-text font-secondary">
+                Zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sitamet, consectetuer adipiscing elit. Ut wisi enim ad
+                minim veniam, quis nostrud exerci tation ulla
+                corper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+              </p>
+            </div>  
+          </div>
+          <div class="skills col-xs-12 col-md-6">
+            <div class="skills-content">
+              <h2 class="details-header fw-900">Skills</h2>
+              <ol class="skills-list">
+                <li class="d-flex align-items-start">
+                  <span class="skills-list-numbering">01</span>
+                  <div class="skills-right">
+                    <h3 class="skills-list-titles fw-900">HTML</h3>
+                    <p class="skills-list-content font-secondary">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                      magna aliquam erat volutpat.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-start">
+                  <span class="skills-list-numbering">02</span>
+                  <div class="skills-right">
+                    <h3 class="skills-list-titles fw-900">CSS</h3>
+                    <p class="skills-list-content font-secondary">
+                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut aliquip ex ea.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-start">
+                  <span class="skills-list-numbering">03</span>
+                  <div class="skills-right">
+                    <h3 class="skills-list-titles fw-900">Javascript</h3>
+                    <p class="skills-list-content font-secondary">
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                      magna aliquam erat volutpat.
+                    </p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-start">
+                  <span class="skills-list-numbering">04</span>
+                  <div class="skills-right">
+                    <h3 class="skills-list-titles fw-900">Angular 2</h3>
+                    <p class="skills-list-content font-secondary">
+                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut aliquip ex ea.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="counters white-box d-flex justify-content-around align-items-center flex-column flex-md-row">
+        <div class="counters-body d-flex flex-column align-items-center justify-content-center">
+          <span class="counters-icon flex-center">
+            <i class="pe-7s-cart"></i>
+          </span>
+          <h2 class="counters-number" data-target="2540">0</h2>
+          <p class="font-secondary counters-text">Product sales</p>
+        </div>
+        <div class="counters-body d-flex flex-column align-items-center justify-content-center">
+          <span class="counters-icon flex-center">
+            <i class="pe-7s-news-paper"></i>
+          </span>
+          <h2 class="counters-number" data-target="400">0</h2>
+          <p class="font-secondary counters-text">Line of Code</p>
+        </div>
+        <div class="counters-body d-flex flex-column align-items-center justify-content-center">
+          <span class="counters-icon flex-center">
+            <i class="pe-7s-photo"></i>
+          </span>
+            <h2 class="counters-number" data-target="8613">0</h2>
+            <p class="font-secondary counters-text">Taking photos</p>
+        </div>
+        <div class="counters-body d-flex flex-column align-items-center justify-content-center">
+          <span class="counters-icon flex-center">
+            <i class="pe-7s-tools"></i>
+          </span>
+          <h2 class="counters-number" data-target="1024">0</h2>
+          <p class="font-secondary counters-text">Bug fixed</p>
+        </div>
+      </section>
+    </div>
+  </main>
+{% endblock %}

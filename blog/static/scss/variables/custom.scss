@@ -1,0 +1,23 @@
+:root {
+  --default-color: #757575;
+  --primary-color: #a6a9ac;
+  --secondary-color: #212121;
+  --border-color: #eceff2;
+  --blue-color: #38b7ea;
+  --red-color: #ff7473;
+  --yellow-color: #ffc952;
+  --green-color: #6dc8bf;
+  --font-primary: "Lato", sans-serif;
+  --font-secondary: font-family: "Merriweather", serif;
+}
+
+$default-color: var(--default-color);
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$border-color: var(--border-color);
+$blue-color: var(--blue-color);
+$red-color: var(--red-color);
+$yellow-color: var(--yellow-color);
+$green-color: var(--green-color);
+$font-primary: var(--font-primary);
+$font-secondary: var(--font-secondary);

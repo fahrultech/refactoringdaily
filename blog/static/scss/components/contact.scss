@@ -1,0 +1,54 @@
+.contact {
+  margin-top: 30px;
+  h2 {
+    font-weight: 900;
+    margin-bottom: 36px;
+    color: $secondary-color;
+  }
+  &-info {
+    &-text {
+      font-size: 17px;
+      line-height: 30px;
+      color: $secondary-color;
+      margin: 0;
+    }
+  }
+  ul {
+    li {
+      margin: 24px 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      .contact-info-icon {
+        margin-right: 1.5rem;
+        i {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+  form {
+    .btn {
+      position: relative;
+      padding-left: 66px;
+      i {
+        font-size: 26px;
+        position: absolute;
+        left: 20px;
+        top: 7px;
+      }
+    }
+  }
+}
+.contact-form-row {
+  margin-bottom: 22px;
+}
+.contact-form-textarea {
+  margin-bottom: 44px;
+}
+
+.contact-map {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 8px;
+}
