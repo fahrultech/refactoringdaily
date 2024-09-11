@@ -62,6 +62,12 @@ TEMPLATES = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://refactoringdaily.com',
+    'https://www.refactoringdaily.com'
+    # Add any other trusted origins here
+]
+
 WSGI_APPLICATION = 'fahrulrizal.wsgi.application'
 
 
