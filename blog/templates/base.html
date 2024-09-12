@@ -69,21 +69,11 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" title="Blog articles">Blog articles</a>
             <ul class="dropdown-menu">
-              <li class="nav-elipse-blue">
-                <a href="./blog_list.html" title="Blog CSS articles">CSS</a>
+              {% for category in categories %}
+              <li class="nav-elipse-{% if forloop.counter0 == 0%}blue{% elif forloop.counter0 == 1%}red{%elif forloop.counter0 == 2%}yellow{% elif forloop.counter0 == 3%}green{% endif %}">
+                <a href="/{{ category.slug }}" title="Blog CSS articles">{{ category.name }}</a>
               </li>
-              <li class="nav-elipse-red">
-                <a href="./blog_list.html" title="Blog HTML articles">HTML</a>
-              </li>
-              <li class="nav-elipse-yellow">
-                <a href="./blog_list.html" title="Blog Javascript articles">Javascript</a>
-              </li>
-              <li class="nav-elipse-green">
-                <a href="./blog_list.html" title="Blog raphic articles">Graphic</a>
-              </li>
-              <li>
-                <a href="./blog_post.html" title="Blog Post">Blog Post</a>
-              </li>
+              {% endfor %}
             </ul>
           </li>
           <li>
