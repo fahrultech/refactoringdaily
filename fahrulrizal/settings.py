@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'  # URL to use when referring to static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Directories Django will look for static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Directory where static files will be collected in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory where static files will be collected in production
 
 # Media settings
 MEDIA_URL = '/media/'
