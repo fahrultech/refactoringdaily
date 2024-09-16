@@ -12323,7 +12323,13 @@ p {
   font-family: "Lato", sans-serif;
   letter-spacing: -0.05px;
 }
+
 p.font-secondary {
+  font-family: "Merriweather", serif;
+  letter-spacing: -0.05px;
+}
+
+.font-secondary p{
   font-family: "Merriweather", serif;
   letter-spacing: -0.05px;
 }

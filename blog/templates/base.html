@@ -23,7 +23,36 @@
   <link rel="preload" as="image" href="{% static 'img/webp/photo1_2x.webp' %}">
   <link rel="preload" as="image" href="{% static 'img/webp/photo2_2x.webp' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  <title>DBlog - Blog for Developers</title>
+  <title>Refactoring Daily</title>
+  <style>
+    #cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      z-index: 1000;
+      display: none;
+      /* Hidden by default */
+    }
+
+    #cookie-consent-banner button {
+      background-color: #f1d600;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    #cookie-consent-banner button.reject {
+      background-color: #e63946;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
@@ -70,7 +99,8 @@
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" title="Blog articles">Blog articles</a>
             <ul class="dropdown-menu">
               {% for category in categories %}
-              <li class="nav-elipse-{% if forloop.counter0 == 0%}blue{% elif forloop.counter0 == 1%}red{%elif forloop.counter0 == 2%}yellow{% elif forloop.counter0 == 3%}green{% endif %}">
+              <li
+                class="nav-elipse-{% if forloop.counter0 == 0%}blue{% elif forloop.counter0 == 1%}red{%elif forloop.counter0 == 2%}yellow{% elif forloop.counter0 == 3%}green{% endif %}">
                 <a href="/{{ category.slug }}" title="Blog CSS articles">{{ category.name }}</a>
               </li>
               {% endfor %}
@@ -234,10 +264,59 @@
     <!-- end COPYRIHT -->
   </footer>
   <!-- end FOOTER -->
+  <!-- Full-width Cookie Consent Banner -->
+  <div id="cookie-consent-banner">
+    <p>This website uses cookies to ensure you get the best experience. <a href="/cookie-policy/"
+        style="color: #f1d600;">Learn more</a></p>
+    <button id="accept-cookies">Accept</button>
+    <button id="reject-cookies" class="reject">Reject</button>
+  </div>
   <script type="text/javascript" src="{% static 'lib/glide.min.js' %}" defer></script>
   <script type="text/javascript" src="{% static 'lib/bootstrap.min.js' %}" defer></script>
   <script type="text/javascript" src="{% static 'lib/reframe.js' %}" defer></script>
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if cookie consent has already been given
+        if (!getCookie('cookie_consent')) {
+            document.getElementById('cookie-consent-banner').style.display = 'block';
+        }
+
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            setCookie('cookie_consent', 'accepted', 30); // Set a cookie for 30 days
+            document.getElementById('cookie-consent-banner').style.display = 'none';
+            // You can enable cookies here or reload the page to allow tracking cookies
+        });
+
+        document.getElementById('reject-cookies').addEventListener('click', function() {
+            setCookie('cookie_consent', 'rejected', 30); // Set a cookie for 30 days
+            document.getElementById('cookie-consent-banner').style.display = 'none';
+            // You can disable cookies or block third-party scripts here
+        });
+
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    });
+</script>
 </body>
 
 </html>

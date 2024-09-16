@@ -15,7 +15,7 @@ def contact(request):
     return render(request, 'blog/contact.html')
 
 def post_detail(request, slug):
-    post = get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(BlogPost, slug=slug)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 def category_detail(request, slug):
