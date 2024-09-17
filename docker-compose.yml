@@ -47,6 +47,7 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email fahrultech@gmail.com --agree-tos --no-eff-email -d refactoringdaily.com --rsa-key-size 2048
     volumes:
       - certbot-etc:/etc/letsencrypt
       - ./nginx/certbot:/var/www/certbot
