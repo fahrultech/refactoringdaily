@@ -39,7 +39,7 @@ services:
       - ./nginx/certbot:/var/www/certbot
       - .:/app
     depends_on:
-      - web
+      web
       certbot:
         condition: service_healthy
     networks:
