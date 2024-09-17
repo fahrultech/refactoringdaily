@@ -57,6 +57,7 @@ services:
 volumes:
   postgres_data:
   certbot-etc:
+    driver: local
   certbot-var:
 
 networks:
