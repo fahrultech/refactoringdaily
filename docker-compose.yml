@@ -40,9 +40,15 @@ services:
       - .:/app
     depends_on:
       - web
-      - certbot
+      certbot:
+        condition: service_healthy
     networks:
       - docker_certbot
+    healthcheck:
+    test: ["CMD-SHELL", "test -f /etc/letsencrypt/live/refactoringdaily.com/fullchain.pem && test -f /etc/letsencrypt/live/refactoringdaily.com/privkey.pem"]
+    interval: 30s
+    timeout: 10s
+    retries: 5
   
   certbot:
     image: certbot/certbot
