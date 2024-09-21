@@ -21,7 +21,7 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         # Return the names of the static views you want to include
-        return ['about', 'contact', 'portofolio']
+        return ['index','about', 'contact', 'portofolio']
 
     def location(self, item):
         # Return the URL for each static page

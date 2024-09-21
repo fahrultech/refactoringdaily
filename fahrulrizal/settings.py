@@ -181,3 +181,22 @@ CELERY_TASK_SERIALIZER = 'json'
 
 RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')  # Replace with your site key
 RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')  # Replace with your secret key
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+       'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Superscript', 'Subscript'],
+            ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
+            ['CodeSnippet', 'RemoveFormat', 'Source'],
+            ['Undo', 'Redo'],
+            ['Maximize'],  # Allows full screen view
+        ],
+        'extraPlugins': 'codesnippet',  # Enable CodeSnippet plugin
+        'height': 400,
+        'width': '100%',
+    }
+}
+

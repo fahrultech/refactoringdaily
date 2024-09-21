@@ -75,6 +75,3 @@ def category_detail(request, slug):
 
 def about(request):
     return render(request, 'blog/about.html')
-
-def projects(request):
-    return render(request, 'blog/projects.html')

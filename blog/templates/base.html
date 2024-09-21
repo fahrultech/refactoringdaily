@@ -23,7 +23,15 @@
   <link rel="preload" as="image" href="{% static 'img/webp/photo2.webp' %}">
   <link rel="preload" as="image" href="{% static 'img/webp/photo1_2x.webp' %}">
   <link rel="preload" as="image" href="{% static 'img/webp/photo2_2x.webp' %}">
+  <link rel="stylesheet" href="{% static 'prism/prism.css'%}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+ <style>
+  .comment {
+    display: inline;
+    background-color: transparent;
+    padding: 0;
+  }
+ </style>
   <title>Refactoring Daily</title>
   <style>
     #cookie-consent-banner {
@@ -151,6 +159,7 @@
   <script type="text/javascript" src="{% static 'lib/reframe.js' %}" defer></script>
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script src="{% static 'prism/prism.js' %}"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Check if cookie consent has already been given
