@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="article-navigation">
+    <ul class="d-flex justify-content-between">
+        {% if previous_post %}
+        <li class="article-navigation-item">
+            <a class="article-navigation-item-link" href="/{{previous_post.category.slug}}/{{previous_post.slug}}" title="Previous Article">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                    <i class="pe-7s-angle-left"></i>
+                    <p class="font-primary mb-1">Previous article</p>
+                </div>
+                <h3 class="d-none d-md-block">{{ previous_post.title }}</h3>
+            </a>
+        </li>
+        {% endif %}
+        {% if next_post %}
+        <li class="article-navigation-item">
+            <a class="article-navigation-item-link" href="/{{next_post.category.slug}}/{{next_post.slug}}" title="Next Article">
+                <div
+                    class="d-flex aling-items-center flex-row-reverse flex-md-row justify-content-center justify-content-md-start">
+                    <i class="pe-7s-angle-right"></i>
+                    <p class="font-primary mb-1">Next article</p>
+                </div>
+                <h3 class="d-none d-md-block">{{ next_post.title }}</h3>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+
+<main>
+    <div class="container">
+        <div class="articles-blog-post">
+            <div class="row">
+                <div class="col-xs-12 col-lg-10">
+                    <article class="articles">
+                        <div class="articles-header">
+                            <time datetime="2022-10-11">{{ post.created_at | timesince}}</time>
+                            <span class="articles-header-tag">New</span>
+                            <span class="articles-header-category">
+                                <a href="#" class="green" title="">{{ post.category }}</a>
+                            </span>
+                        </div>
+                        <div class="articles-content px-8">
+                            <h1 class="articles-blog-post-tile fw-900">
+                                <a href="#" title="Keeping Your Business And Clients Safe With Digital Policies">
+                                    {{ post.title }}
+                                </a>
+                            </h1>
+                            <div class="articles-blog-post-text font-secondary">
+                                {{ post.content | safe }}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-xs-12 col-lg-2">
+                    <div class="side-section">
+                        <h3 class="side-section-title">Share this</h3>
+                        <ul>
+                            <li>
+                                <a class="text-13px" href="#" title="Facebook">
+                                    <i class="fab fa-facebook-f w-3 mr-2.5"></i>Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-13px" href="#" title="Twitter">
+                                    <i class="fab fa-twitter w-3 mr-2.5"></i>Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-13px" href="#" title="Google+">
+                                    <i class="fab fa-google-plus-g w-3 mr-2.5"></i>Google+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="blog-post-bottom-section">
+            <div>
+                <div class="articles-info col-xs-12 col-lg-10">
+                    <!-- <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column-reverse flex-md-row">
+              <a class="btn" title="Write a response" href="#">
+                Write a response
+              </a>
+              <ul class="d-flex">
+                <li>
+                  <a title="" href="#" class="d-flex align-items-center">
+                    <i class="pe-7s-comment"></i> 
+                    7 Response
+                  </a>
+                </li>
+                <li class="ml-5.5">
+                  <a title="" href="#" class="d-flex align-items-center">
+                    <i class="pe-7s-like"></i> 
+                    1221
+                  </a>
+                </li>
+              </ul>
+            </div> -->
+                    <div class="articles-author d-flex">
+                        <img class="articles-author-img" src="{% static 'img/webp/profile-picture_2x.webp' %}"
+                            alt="Profile picture">
+                        <div class="articles-author-content">
+                            <div
+                                class="articles-author-header d-flex justify-content-between align-items-md-center flex-column flex-md-row">
+                                <h4 class="">Bill Gates</h4>
+                                <div class="author-social d-flex align-items-center">
+                                    <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-icon" title="Github"><i class="fab fa-git"></i></a>
+                                    <a href="#" class="social-icon" title="LinkedIn"><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                            <p class="font-primary articles-author-content-text">
+                                Compassionate entrepreneur on a mission to end homelessness.
+                                #jshomes Javascript, tech education, electronic music, photography, film, viral apps.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="last-read">
+            <h2 class="blog-post-bottom-section-title">Last Reads</h2>
+            <div class="article-banner">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                  <div class="article-banner-wrapper">
+                    <a class="group" href="#" title="Angular 2 versus React: There Will Be Blood">
+                      <div class="article-banner-content">
+                        <h2>Angular 2 versus React: There Will Be Blood</h2>
+                        <span class="category-tag category-tag-yellow">Javascript</span>
+                        <time datetime="2022-03-01" class="article-banner-time">March 1, 2022</time>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                  <div class="article-banner-wrapper">
+                    <a class="group" href="#" title="The End of Global CSS">
+                      <div class="article-banner-content">
+                        <h2>The End of Global CSS</h2>
+                        <span class="category-tag category-tag-green">Graphic</span>
+                        <time datetime="2022-03-01" class="article-banner-time">March 13, 2022</time>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                  <div class="article-banner-wrapper">
+                    <a class="group" href="#" title="Building an CSS Framework">
+                      <div class="article-banner-content">
+                        <h2>Building an CSS Framework</h2>
+                        <span class="category-tag category-tag-blue">CSS</span>
+                        <time datetime="2022-03-01" class="article-banner-time">March 24, 2022</time>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+                <!-- <div class="col-xs-12 col-lg-10">
+            <h2 class="blog-post-bottom-section-title">
+              Responses 
+              <span class="fst-italic">(7)</span>
+            </h2>
+            <a class="write-a-response-btn d-flex align-items-center">
+              <i class="pe-7s-comment"></i>
+              <span>Write a response</span>
+            </a>
+            <div class="response-form-wrapper d-none">
+              <form class="contact-form" action="">
+                <div class="contact-form-row row">
+                  <div class="col-xs-12 col-md-6">
+                    <input class="form-control" type="text" placeholder="Name" name="name">
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <input class="form-control col-xs-12 col-md-6" type="email" placeholder="Email" name="email">
+                  </div>
+                </div>
+                <textarea class="form-control" id="" rows="6" placeholder="Comment" name="comment"></textarea>
+                <button type="submit" class="btn">
+                  <i class="pe-7s-paper-plane"></i> 
+                  Send
+                </button>
+              </form>
+            </div>
+            <ol>
+              <li>
+                <div class="comment">
+                  <img class="comment-img" src="./img/webp/profile-picture5_2x.webp" alt="Profile Picture">
+                  <div class="comment-content">
+                    <div class="comment-content-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                      <h3>Jacob Amaro</h3>
+                      <time datetime="2022-11-13T20:00Z">July 18, 2022 at 10:36 AM</time>
+                    </div>
+                    <p class="comment-content-text">
+                      Music is one of the driving forces in my life. I pray you will not let this be the last concert you attend. Dolly
+                      Parton,
+                      Kenny Rogers, Alabama, Three Dog Night, the first Bryan Adams: Cut like A Knife. And many more. Those I have
+                      seen.
+                      Nothing else like it. So proud u share music w your kids.
+                    </p>
+                    <div class="comment-content-footer d-flex justify-content-between align-items-center">
+                      <a class="btn" href="#" title="Watch it">Reply</a>
+                      <a title="Likes" href="#" class="d-flex">
+                        <i class="pe-7s-like"></i> 
+                        0
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <ol>
+                  <li>
+                    <div class="comment comment-response">
+                      <img class="comment-img" src="./img/webp/profile-picture6@2x.webp" alt="Profile Picture">
+                      <div class="comment-content">
+                        <div class="comment-content-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                          <h3>Jacob Amaro</h3>
+                          <time datetime="2022-11-13T20:00Z">July 18, 2022 at 10:36 AM</time>
+                        </div>
+                        <p class="comment-content-text">
+                          <span class="fst-italic">@Jacob Amaro</span> 
+                          My father would always play Matt Monro or Madonna or some other
+                          classic CD every Sunday
+                          morning, while my mom was cooking breakfast. It was always a good Sunday to wake up to. :)
+                        </p>
+                        <div class="comment-content-footer d-flex justify-content-between align-items-center">
+                          <a class="btn" href="#" title="Watch it">Reply</a>
+                          <a title="Likes" href="#" class="d-flex">
+                            <i class="pe-7s-like text-2xl mr-2"></i> 
+                            0
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="comment comment-response">
+                      <img class="comment-img" src="./img/webp/profile-picture6@2x.webp" alt="Profile Picture">
+                      <div class="comment-content">
+                        <div class="comment-content-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                          <h3>Jacob Amaro</h3>
+                          <time datetime="2022-11-13T20:00Z">July 18, 2022 at 10:36 AM</time>
+                        </div>
+                        <p class="comment-content-text">
+                          <span class="fst-italic">@Jacob Amaro</span> 
+                          My father would always play Matt Monro or Madonna or some other
+                          classic CD every Sunday
+                          morning, while my mom was cooking breakfast. It was always a good Sunday to wake up to. :)
+                        </p>
+                        <div class="comment-content-footer d-flex justify-content-between align-items-center">
+                          <a class="btn" href="#" title="Watch it">Reply</a>
+                          <a title="Likes" href="#" class="d-flex">
+                            <i class="pe-7s-like text-2xl mr-2"></i> 
+                            0
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="comment comment-response">
+                      <img class="comment-img" src="./img/webp/profile-picture6@2x.webp" alt="Profile Picture">
+                      <div class="comment-content">
+                        <div class="comment-content-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                          <h3>Jacob Amaro</h3>
+                          <time datetime="2022-11-13T20:00Z">July 18, 2022 at 10:36 AM</time>
+                        </div>
+                        <p class="comment-content-text">
+                          <span class="fst-italic">@Jacob Amaro</span> 
+                          My father would always play Matt Monro or Madonna or some other
+                          classic CD every Sunday
+                          morning, while my mom was cooking breakfast. It was always a good Sunday to wake up to. :)
+                        </p>
+                        <div class="comment-content-footer d-flex justify-content-between align-items-center">
+                          <a class="btn" href="#" title="Watch it">Reply</a>
+                          <a title="Likes" href="#" class="d-flex">
+                            <i class="pe-7s-like"></i> 
+                            0
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="show-more-answers comment justify-content-center">
+                      <a title="" class="show-more-answers-text align-items-center">
+                        <span>
+                          Show more answers
+                        </span>
+                        <i class="pe-7s-angle-down"></i>
+                      </a>
+                      <a title="" class="hide-more-answers-text align-items-center hide-answers">
+                        <span>
+                          Hide answers
+                        </span>
+                        <i class="pe-7s-angle-up"></i>
+                      </a>
+                    </div>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <div class="comment">
+                  <img class="comment-img" src="./img/webp/profile-picture7@2x.webp" alt="Profile Picture">
+                  <div class="comment-content">
+                    <div class="comment-content-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                      <h3>Mitchell Parison</h3>
+                      <time datetime="2022-11-13T20:00Z">July 18, 2022 at 10:36 AM</time>
+                    </div>
+                    <p class="comment-content-text">
+                      Beatiful article! Very helpful!
+                    </p>
+                    <div class="comment-content-footer d-flex justify-content-between align-items-center">
+                      <a class="btn" href="#" title="Watch it">Reply</a>
+                      <a title="Likes" href="#" class="d-flex">
+                        <i class="pe-7s-like text-2xl mr-2"></i> 
+                        0
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div> -->
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}

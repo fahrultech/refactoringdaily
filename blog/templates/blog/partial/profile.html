@@ -1,0 +1,62 @@
+{% load static %}
+<div class="aside-blocks col-lg-4 col-xs-12">
+    <section class="author">
+        <img src="{% static 'img/webp/profile-picture_2x.webp' %}" alt="Profile picture" width="100" height="100">
+        <h2>Fahrul Rizal</h2>
+        <span class="author-info">Fullstact Web Developer</span>
+        <span class="author-info">Freelance</span>
+        <div class="author-social d-flex align-items-center justify-content-center">
+            <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon" title="Github"><i class="fab fa-git"></i></a>
+            <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <ul class="author-nav">
+            <li><a class="d-flex align-items-center" href="#" title=""><i class="pe-7s-bookmarks"></i> Download my
+                    CV</a></li>
+            <li><a class="d-flex align-items-center" href="/contact/" title=""><i class="pe-7s-paper-plane"></i> Write
+                    message</a></li>
+        </ul>
+    </section>
+
+    <section class="categories">
+        <h2 class="aside-blocks-title">Categories</h2>
+        <ul>
+            {% for category in categories%}
+            <li
+                class="nav-elipse-{% if forloop.counter0 == 0%}blue{% elif forloop.counter0 == 1%}red{%elif forloop.counter0 == 2%}yellow{% elif forloop.counter0 == 3%}green{% endif %}">
+                <a href="/{{ category.slug }}" title="Blog CSS articles">{{ category.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- <section class="advertisement">
+      <a href="#">
+        <img srcset="{% static 'img/webp/advertisement.webp' 767w %}"
+          src="{% static 'img/webp/advertisement_2x.webp' %}" alt="Advertisement">
+      </a>
+    </section> -->
+
+    <section class="last-project">
+        <h2 class="aside-blocks-title">Last Project</h2>
+        <div class="last-project-one">
+            <h3 class="h4"><a href="#">Microsoft TypeScript</a></h3>
+            <time datetime="2022-12-31T23:59:59Z">January 18, 2022</time>
+            <p class="mt-2 last-project-one-text">TypeScript starts from the same syntax and semantics that millions of
+                JavaScript developers know... </p>
+            <a href="#" title="Watch it" class="btn btn-small">Watch it</a>
+        </div>
+    </section>
+
+    <section class="tags">
+        <h2 class="aside-blocks-title">Tags</h2>
+        <ul class="tags-content">
+            <li class="badge rounded-pill"><a href="#">graphic</a></li>
+            <li class="badge rounded-pill"><a href="#">angular2</a></li>
+            <li class="badge rounded-pill"><a href="#">graphic</a></li>
+            <li class="badge rounded-pill"><a href="#">react</a></li>
+            <li class="badge rounded-pill"><a href="#">it</a></li>
+            <li class="badge rounded-pill"><a href="#">science</a></li>
+        </ul>
+    </section>
+</div>

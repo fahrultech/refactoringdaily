@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build:
-      context: .
-      dockerfile: docker/web/Dockerfile
+    build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
@@ -14,6 +12,10 @@ services:
       - .env
     depends_on:
       - db
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
 
   db:
     image: postgres:15-bullseye
@@ -41,6 +43,23 @@ services:
       - .:/app
     depends_on:
       - web
+
+  celery:
+    build: .
+    command: celery -A fahrulrizal worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - db
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+  
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
   
   certbot:
     image: certbot/certbot

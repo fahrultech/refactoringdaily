@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'contact',
+    'django_recaptcha',
     'ckeditor',
     'ckeditor_uploader'
 ]
@@ -156,3 +158,25 @@ CKEDITOR_CONFIGS = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')   # Replace with your email
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Replace with your email password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Celery settings
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Use Redis as the message broker
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+RECAPTCHA_PUBLIC_KEY = '6LfeVEoqAAAAAJXdlHgltJsYQh5NpAXe5NW4TNrM'  # Replace with your site key
+RECAPTCHA_PRIVATE_KEY = '6LfeVEoqAAAAAJqBVyN5nBwrGYJPdGHubhG85Q0_'  # Replace with your secret key

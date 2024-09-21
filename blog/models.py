@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
+from django.core.exceptions import ValidationError
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -49,6 +50,14 @@ class BlogPost(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+    
+    def clean(self):
+        # Validate that each feature position is unique
+        if self.featured_position != 0:  # Skip validation if not featured
+            # Check if any other post is already using the same featured position
+            existing_post = BlogPost.objects.filter(featured_position=self.featured_position).exclude(id=self.id)
+            if existing_post.exists():
+                raise ValidationError(f'Feature {self.get_featured_position_display()} is already assigned to another article.')
 
     def __str__(self):
         return self.title

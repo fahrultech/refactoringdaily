@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-xs-12 col-lg-8">
           <section class="articles">
-            {% for post in posts%}
+            {% for post in page_obj%}
             <article class="green-article">
                 <div class="articles-header">
                   <time datetime="2022-10-11">{{ post.created_at|timesince }}</time>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="articles-content">
                   <h2>
-                    <a href="./blog_post.html" title="">
+                    <a href="{{ post.slug }}" title="">
                       {{post.title}}
                     </a>
                   </h2>
@@ -43,91 +43,69 @@
                       </a>
                     </li>
                   </ul>
-                  <a title="" class="btn" href="./blog_post.html">Read more</a>
+                  <a title="" class="btn" href="{{ post.slug }}">Read more</a>
                 </div>
               </article>
             {% endfor %}   
             <!-- PAGINATION -->
-            <nav class="articles-navigation d-flex justify-content-between align-items-center" aria-label="...">
-              <a title="" href="#" class="btn-small-white pagination-back">Back</a>
-              <ul class="pagination d-none d-md-flex">
-                <li class="page-item active">
-                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+            <!-- PAGINATION -->
+          <nav class="articles-navigation d-flex justify-content-between align-items-center" aria-label="...">
+            {% if page_obj.has_previoys %}
+            <a title="" href="?page=1" class="btn-small-white pagination-back">&laquo; first</a>
+            <a title="" href="?page={{ page.obj.previous_page_number }}"
+              class="btn-small-white pagination-back">previous</a>
+            {% endif %}
+            <ul class="pagination d-none d-md-flex">
+              {% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+              {% endif %}
+            
+              <!-- Loop through all pages -->
+              {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                  <!-- Highlight current page -->
+                  <li class="page-item active">
+                    <a class="page-link" href="#">{{ num }} <span class="sr-only">(current)</span></a>
+                  </li>
+                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+                  <!-- Show pages close to current page -->
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            
+              <!-- Add '...' if more than 5 pages and current page is not near the last page -->
+              {% if page_obj.paginator.num_pages > 5 and page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
                 <li class="page-item page-item-more"><a class="page-link" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">25</a></li>
-              </ul>
-              <a title="" href="blog_post.html" class="btn-small-white pagination-next">Next</a>
-            </nav>
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                </li>
+              {% endif %}
+            
+              {% if page_obj.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+              {% endif %}
+            </ul>
+            
+            <!-- <ul class="pagination d-none d-md-flex">
+              <li class="page-item active">
+                <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item page-item-more"><a class="page-link" href="#">...</a></li>
+              <li class="page-item"><a class="page-link" href="#">25</a></li>
+            </ul>
+            <a title="" href="blog_post.html" class="btn-small-white pagination-next">Next</a> -->
+          </nav>
           </section>
         </div>
-        <div class="aside-blocks col-lg-4 col-xs-12">
-          <section class="author">
-            <img
-              src="./img/webp/profile-picture_2x.webp"
-              alt="Profile picture"
-              width="100"
-              height="100"
-              >
-            <h2>Bill Gates</h2>
-            <span class="author-info">Front-End Developer</span>
-            <span class="author-info">Microsoft Company</span>
-            <div class="author-social d-flex align-items-center justify-content-center">
-              <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon" title="Github"><i class="fab fa-git"></i></a>
-              <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <ul class="author-nav">
-              <li><a class="d-flex align-items-center" href="#" title=""><i class="pe-7s-bookmarks"></i> Download my CV</a></li>
-              <li><a class="d-flex align-items-center" href="#" title=""><i class="pe-7s-paper-plane"></i> Write message</a></li>
-            </ul>
-          </section>
-
-          <section class="categories">
-            <h2 class="aside-blocks-title">Categories</h2>
-            <ul>
-              <li class="nav-elipse-blue"><a href="#" title="Blog CSS articles">CSS</a></li>
-              <li class="nav-elipse-red"><a href="#" title="Blog HTML articles">HTML</a></li>
-              <li class="nav-elipse-yellow"><a href="#" title="Blog Javascript articles">Javascript</a></li>
-              <li class="nav-elipse-green"><a href="#" title="Blog raphic articles">Graphic</a></li>
-              <li><a href="#" title="Blog other articles">Other</a></li>
-            </ul>
-          </section>
-
-          <section class="advertisement">
-            <a href="#">
-              <img
-                src="./img/webp/advertisement_2x.webp" 
-                alt="Advertisement"
-                >
-            </a>
-          </section>
-
-          <section class="last-project">
-            <h2 class="aside-blocks-title">Last Project</h2>
-            <div class="last-project-one">
-              <h3 class="h4"><a href="#">Microsoft TypeScript</a></h3>
-              <time datetime="2022-12-31T23:59:59Z">January 18, 2022</time>
-              <p class="mt-2 last-project-one-text">TypeScript starts from the same syntax and semantics that millions of
-                  JavaScript developers know... </p>
-              <a href="#" title="Watch it" class="btn btn-small">Watch it</a>
-            </div>
-          </section>
-
-          <section class="tags">
-            <h2 class="aside-blocks-title">Tags</h2>
-            <ul class="tags-content">
-              <li class="badge rounded-pill"><a href="#">graphic</a></li>
-              <li class="badge rounded-pill"><a href="#">angular2</a></li>
-              <li class="badge rounded-pill"><a href="#">graphic</a></li>
-              <li class="badge rounded-pill"><a href="#">react</a></li>
-              <li class="badge rounded-pill"><a href="#">it</a></li>
-              <li class="badge rounded-pill"><a href="#">science</a></li>
-            </ul>
-          </section>
-        </div>
+        {% include 'blog/partial/profile.html' %}
       </div>
     </div>
 
