@@ -45,6 +45,13 @@ class BlogPost(models.Model):
     # Use the custom queryset for BlogPost
     objects = BlogPostQuerySet.as_manager()
 
+    def get_absolute_url(self):
+        # Return the URL for the blog post based on its slug and category_slug
+        return reverse('post_detail', kwargs={
+            'category_slug': self.category.slug,
+            'post_slug': self.slug
+        })
+
     def save(self, *args, **kwargs):
         # Automatically generate slug from title if not provided
         if not self.slug:
