@@ -178,5 +178,5 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Use Redis as the message broke
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
-RECAPTCHA_PUBLIC_KEY = '6LfeVEoqAAAAAJXdlHgltJsYQh5NpAXe5NW4TNrM'  # Replace with your site key
-RECAPTCHA_PRIVATE_KEY = '6LfeVEoqAAAAAJqBVyN5nBwrGYJPdGHubhG85Q0_'  # Replace with your secret key
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')  # Replace with your site key
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')  # Replace with your secret key
