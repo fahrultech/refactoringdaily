@@ -12826,6 +12826,17 @@ header {
   font-size: 32px;
   line-height: 46px;
 }
+
+.articles-content ul {
+  list-style:disc!important;
+  margin-left: 30px;
+}
+
+.articles-content ol {
+  list-style:decimal!important;
+  margin-left: 30px;
+}
+
 @media (max-width: 991.98px) {
   .articles-content h2, .articles-content .h2 {
     font-size: 28px;

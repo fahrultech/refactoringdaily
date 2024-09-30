@@ -67,7 +67,7 @@ def post_detail(request, category_slug, post_slug):
 
 def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    posts = BlogPost.objects.filter(category=category)
+    posts = BlogPost.objects.order_by('-created_at').filter(category=category)
     paginator = Paginator(posts, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
