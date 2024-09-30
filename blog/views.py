@@ -14,7 +14,7 @@ def index(request):
         'feature4': BlogPost.objects.featured(4),
         'feature5': BlogPost.objects.featured(5)
     }
-    posts = BlogPost.objects.exclude(featured_position__in=[1, 2, 3, 4, 5])
+    posts = BlogPost.objects.exclude(featured_position__in=[1, 2, 3, 4, 5]).filter(is_publish=True)
 
     paginator = Paginator(posts, 3)
     page_number = request.GET.get('page')
@@ -67,7 +67,7 @@ def post_detail(request, category_slug, post_slug):
 
 def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    posts = BlogPost.objects.order_by('-created_at').filter(category=category)
+    posts = BlogPost.objects.order_by('-created_at').filter(category=category, is_publish=True)
     paginator = Paginator(posts, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

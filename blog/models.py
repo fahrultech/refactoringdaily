@@ -39,6 +39,7 @@ class BlogPost(models.Model):
     content = RichTextField()
     meta_description = models.CharField(max_length=160, blank=True)
     featured_position = models.PositiveSmallIntegerField(choices=FEATURED_CHOICES, default=0)  # New field for featured slot
+    is_publish = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
